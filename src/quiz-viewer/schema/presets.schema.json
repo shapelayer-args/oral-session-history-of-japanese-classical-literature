@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shapelayer-args.github.io/oral-session-history-of-japanese-classical-literature/quiz-viewer/schema/presets.schema.json",
+  "title": "Quiz Viewer Preset Index",
+  "description": "presets/index.json, generated at build time from GENERATED/QUIZ/*.json. See DOCS/API_QUIZ_VIEWER.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["specVersion", "generatedAt", "presets"],
+  "properties": {
+    "specVersion": { "const": "1.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "presets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "file", "title", "difficulty", "questionCount"],
+        "properties": {
+          "id": { "type": "string", "description": "The quiz's own id." },
+          "file": { "type": "string", "pattern": "^[^/\\\\]+\\.json$", "description": "File name under presets/, relative to index.json." },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "difficulty": { "enum": ["easy", "normal", "hard"] },
+          "questionCount": { "type": "integer", "minimum": 1 },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

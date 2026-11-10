@@ -1,0 +1,71 @@
+# Builds the quiz viewer with the presets in GENERATED/QUIZ and publishes it
+# to GitHub Pages at
+#   https://shapelayer-args.github.io/oral-session-history-of-japanese-classical-literature/quiz-viewer/
+#
+# Requires Settings → Pages → Source: "GitHub Actions". The built site is an
+# artifact; nothing generated is committed. A preset that fails validation
+# (schema/quiz.schema.json and the viewer's rules) fails the build, so a
+# broken quiz is never deployed.
+name: Deploy quiz viewer to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/quiz-viewer/**'
+      - 'GENERATED/QUIZ/**'
+      - '.github/workflows/quiz-viewer-pages.yml'
+  pull_request:
+    paths:
+      - 'src/quiz-viewer/**'
+      - 'GENERATED/QUIZ/**'
+      - '.github/workflows/quiz-viewer-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/quiz-viewer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: src/quiz-viewer/package-lock.json
+      - run: npm ci
+      # Typecheck, validate every preset, then build. Pages serves the site
+      # root, so the viewer goes under quiz-viewer/ and the root redirects to it.
+      - run: npm run build
+      - name: Assemble site
+        run: |
+          mkdir -p ../../_site
+          cp -R dist ../../_site/quiz-viewer
+          cp pages/index.html ../../_site/index.html
+          touch ../../_site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}quiz-viewer/
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

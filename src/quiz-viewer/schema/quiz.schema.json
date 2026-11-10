@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shapelayer-args.github.io/oral-session-history-of-japanese-classical-literature/quiz-viewer/schema/quiz.schema.json",
+  "title": "Quiz Viewer Quiz Document",
+  "description": "A quiz set produced by AGENTS/GENERATE_QUIZ.md and displayed by the quiz viewer (AGENTS/DEVELOP_QUIZ_VIEWER.md). See DOCS/API_QUIZ_VIEWER.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["specVersion", "id", "title", "difficulty", "questions"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional pointer to this schema, for editors."
+    },
+    "specVersion": {
+      "const": "1.0",
+      "description": "Version of this document format."
+    },
+    "id": {
+      "$ref": "#/$defs/slug",
+      "description": "Stable identifier of the quiz set. Unique among the presets."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Title shown in the open dialog and the viewer header."
+    },
+    "description": {
+      "type": "string",
+      "description": "Short summary of what the quiz covers."
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+      "default": "ko",
+      "description": "BCP 47 language tag of the quiz text."
+    },
+    "difficulty": {
+      "$ref": "#/$defs/difficulty",
+      "description": "Difficulty of the whole set, per AGENTS/GENERATE_QUIZ.md."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the quiz was generated (ISO 8601)."
+    },
+    "authors": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "People or agents who produced the quiz."
+    },
+    "sources": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/reference" },
+      "description": "Slide decks and references the quiz was generated from."
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/question" },
+      "description": "The N questions, in the order they are asked."
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "difficulty": {
+      "enum": ["easy", "normal", "hard"],
+      "description": "easy: 쉬움, normal: 보통, hard: 어려움."
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1, "description": "Human-readable citation." },
+        "path": { "type": "string", "description": "Workspace-relative path, e.g. typst/main.typ or resources/xxx.pdf." },
+        "slide": { "type": "integer", "minimum": 1, "description": "Slide number in the deck." },
+        "page": { "type": "string", "description": "Page or page range in a reference, e.g. \"12\" or \"12-14\"." },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "choice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "text", "valid", "explanation"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug", "description": "Identifier of the choice, unique within its question." },
+        "text": { "type": "string", "minLength": 1, "description": "The statement shown as the choice." },
+        "valid": {
+          "type": "boolean",
+          "description": "Whether the statement is a valid (타당한) answer to the question. Not whether it is the answer to pick."
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why the statement is valid or why it is refuted."
+        },
+        "references": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/reference" }
+        }
+      }
+    },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "mode", "prompt", "choices", "answer"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug", "description": "Identifier of the question, unique within the quiz." },
+        "type": {
+          "const": "single-choice",
+          "description": "Multiple choice with exactly one correct pick."
+        },
+        "mode": {
+          "enum": ["pick-valid", "pick-invalid"],
+          "description": "pick-valid (경우 1): one valid statement, the rest refuted; pick it. pick-invalid (경우 2): one refuted statement, the rest valid; pick it."
+        },
+        "prompt": { "type": "string", "minLength": 1, "description": "The question text." },
+        "choices": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/choice" },
+          "description": "Exactly four choices (4지선다). The viewer may shuffle them."
+        },
+        "answer": {
+          "$ref": "#/$defs/slug",
+          "description": "id of the correct choice. Must be the only valid choice (pick-valid) or the only invalid one (pick-invalid)."
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Overall explanation of the correct answer, shown after answering."
+        },
+        "difficulty": {
+          "$ref": "#/$defs/difficulty",
+          "description": "Overrides the set's difficulty for this question."
+        },
+        "references": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/reference" }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "mode": { "const": "pick-valid" } } },
+          "then": {
+            "properties": {
+              "choices": {
+                "contains": { "properties": { "valid": { "const": true } } },
+                "minContains": 1,
+                "maxContains": 1
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "mode": { "const": "pick-invalid" } } },
+          "then": {
+            "properties": {
+              "choices": {
+                "contains": { "properties": { "valid": { "const": false } } },
+                "minContains": 1,
+                "maxContains": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "quiz-viewer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Quiz viewer for the oral session: plays the quizzes in GENERATED/QUIZ.",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run check && vite build",
+    "preview": "vite preview --port 8080 --host 127.0.0.1 --strictPort",
+    "check": "npm run typecheck && npm run check:presets",
+    "typecheck": "tsc --noEmit -p .",
+    "check:presets": "node scripts/check-presets.ts"
+  },
+  "dependencies": {
+    "lucide-react": "0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^6.0.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  }
+}
