@@ -246,8 +246,9 @@
 
 // Content Start
 
-#page(margin: 0pt)[
+#hide-page-counter()
 
+#page(margin: 0pt)[
 
   #align(center + horizon)[#pad(x: 20pt)[
     #v(40mm)
@@ -458,6 +459,8 @@
 
 #pagebreak()
 
+#hide-page-counter()
+
 #pagebreak()
 
 // 겐지모노가타리
@@ -529,6 +532,9 @@
 ]
 
 #pagebreak()
+
+#hide-page-counter()
+
 #pagebreak()
 
 #quote-content[
@@ -635,6 +641,8 @@
 
 #pagebreak()
 
+#hide-page-counter()
+
 #pagebreak()
 
 #set align(center)
@@ -716,6 +724,8 @@
 
 #pagebreak()
 
+#hide-page-counter()
+
 #pagebreak()
 
 #quote-content[
@@ -795,7 +805,53 @@
   ]
 }
 
+#pagebreak()
+
 // 모노노아와레... 그럼에도 우리는 슬픔을 안고서 계속해서 살아가므로
+
+#hide-page-counter()
+#page(margin: 0pt)[
+
+  #align(center + horizon)[#pad(x: 20pt)[
+    #v(40mm)
+    #text(size: 36pt)[#par(leading: 1em)[
+      산실에서 드러나는 모노노케의 정체
+    ]]
+    \
+    #text(size: 18pt)[
+      『겐지모노가타리』와 『헤이케모노가타리』에서 출산 과정에 등장하는 모노노케들
+    ]
+
+    #text(size: 18pt)[
+      모노노케 서사는 왜 출산에 자주 사용되었는가?
+    ]
+
+    #v(50pt)
+
+    #align(right)[#pad(x: 20pt)[
+      #text(size: 16pt)[#par(leading: 1em)[
+        박종현\
+        전남대학교 컴퓨터정보통신공학과
+      ]]]
+    ]
+    #v(100mm)
+  ]]
+  #place(bottom, layout(size => {
+    let image-height = size.width * 807 / 2000
+
+    // 위 28%, 아래 5%를 잘라내고 가운데 67%만 보여주기
+    let crop-top = image-height * 0.28
+    let crop-bottom = image-height * 0.05
+
+    block(width: 100%, height: image-height - crop-top - crop-bottom, clip: true)[
+      #place(top + left, dy: -crop-top, image(
+        "assets/Shinnyodoo_engi.jpg",
+        width: size.width,
+        height: image-height,
+      ))
+    ]
+  }))
+]
 
 #pagebreak()
 
