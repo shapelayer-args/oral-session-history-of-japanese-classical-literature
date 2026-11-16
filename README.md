@@ -17,3 +17,13 @@
 >     - 작성한 PPT와 생성물 자료를 함께 제출
 >     - 노트북 LM의 퀴즈 기능을 사용하여 퀴즈를 생성할 것
 > - 단 같은 기능을 수행한다면, 다른 AI 스택을 사용해도 됨
+
+## Fetch private resources
+
+```sh
+# Set Credentials
+
+# Fetch
+git submodule init
+git submodule update
+```

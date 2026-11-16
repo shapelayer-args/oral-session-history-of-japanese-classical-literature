@@ -1,3 +1,6 @@
 [submodule "SKILLS/stageshow"]
 	path = SKILLS/stageshow
 	url = https://github.com/benjitaylor/skills
+[submodule "resources/oral-session-history-of-japanese-classical-literature-private"]
+	path = resources/oral-session-history-of-japanese-classical-literature-private
+	url = https://github.com/shapelayer-args/oral-session-history-of-japanese-classical-literature-private.git
