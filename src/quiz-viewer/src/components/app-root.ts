@@ -14,8 +14,8 @@ import type { QuizPlayer } from './quiz-player.ts'
 import { fetchQuizUrl } from '../quiz/sources.ts'
 import type { Quiz } from '../quiz/types.ts'
 
-const REPO = 'https://github.com/shapelayer-args/oral-session-history-of-japanese-classical-literature'
-const SPEC_URL = `${REPO}/blob/main/DOCS/API_QUIZ_VIEWER.md`
+const SCHEMA_URL = 'schema/quiz.schema.json'
+const SPEC_URL = import.meta.env.VITE_QUIZ_SPEC_URL || SCHEMA_URL
 const SHUFFLE_KEY = 'quiz-viewer:shuffle'
 
 const TEMPLATE = `
@@ -23,8 +23,8 @@ const TEMPLATE = `
   <main class="qv-content">
     <section class="qv-welcome">
       <div class="qv-welcome__copy">
-        <h1>일본 고전문학사 퀴즈</h1>
-        <p>발표 내용을 확인하는 4지선다 퀴즈입니다. 답을 고르면 정답 여부와 각 선택지의 해설이 표시되고, 다음 문항으로 넘어갈 수 있습니다.</p>
+        <h1>퀴즈 뷰어</h1>
+        <p>4지선다 퀴즈를 열어 풀 수 있습니다. 답을 고르면 정답 여부와 각 선택지의 해설이 표시되고, 다음 문항으로 넘어갈 수 있습니다.</p>
         <div class="qv-welcome__actions">
           <button type="button" class="qv-button qv-button--primary" data-open="presets">프리셋 열기…</button>
           <button type="button" class="qv-button" data-open="file">로컬 파일 열기…</button>
@@ -40,8 +40,7 @@ const TEMPLATE = `
     <form method="dialog" class="qv-dialog__frame">
       <header class="qv-dialog__head"><h2 id="qv-about-title">퀴즈 뷰어 정보</h2><button class="qv-icon-button" aria-label="닫기">×</button></header>
       <section class="qv-dialog__body">
-        <p>Oral Session: 일본 고전문학사 의 퀴즈 뷰어입니다.</p>
-        <p class="qv-muted">퀴즈 형식: <a href="${SPEC_URL}" target="_blank" rel="noopener">DOCS/API_QUIZ_VIEWER.md</a> · JSON Schema: <a href="schema/quiz.schema.json" target="_blank">schema/quiz.schema.json</a></p>
+        <p class="qv-muted">퀴즈 형식: <a href="${SCHEMA_URL}" target="_blank" rel="noopener">JSON Schema</a></p>
         <p class="qv-muted">일러스트: <a href="https://github.com/benjitaylor/skills" target="_blank" rel="noopener">Stageshow</a> kit (MIT).</p>
       </section>
     </form>

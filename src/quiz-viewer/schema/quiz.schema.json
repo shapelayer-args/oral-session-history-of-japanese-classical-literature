@@ -1,6 +1,5 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://shapelayer-args.github.io/oral-session-history-of-japanese-classical-literature/quiz-viewer/schema/quiz.schema.json",
   "title": "Quiz Viewer Quiz Document",
   "description": "A quiz set produced by AGENTS/GENERATE_QUIZ.md and displayed by the quiz viewer (AGENTS/DEVELOP_QUIZ_VIEWER.md). See DOCS/API_QUIZ_VIEWER.md.",
   "type": "object",

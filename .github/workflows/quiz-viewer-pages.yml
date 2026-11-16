@@ -1,6 +1,5 @@
 # Builds the quiz viewer with the presets in GENERATED/QUIZ and publishes it
-# to GitHub Pages at
-#   https://shapelayer-args.github.io/oral-session-history-of-japanese-classical-literature/quiz-viewer/
+# to GitHub Pages under quiz-viewer/.
 #
 # Requires Settings → Pages → Source: "GitHub Actions". The built site is an
 # artifact; nothing generated is committed. A preset that fails validation
@@ -32,6 +31,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      QUIZ_PRESET_DIR: ../../GENERATED/QUIZ
+      VITE_QUIZ_SPEC_URL: ${{ github.server_url }}/${{ github.repository }}/blob/main/DOCS/API_QUIZ_VIEWER.md
     defaults:
       run:
         working-directory: src/quiz-viewer

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Quiz viewer for the oral session: plays the quizzes in GENERATED/QUIZ.",
+  "description": "Viewer for four-option quizzes from JSON files, URLs, and preset collections.",
   "engines": {
     "node": ">=22.18"
   },

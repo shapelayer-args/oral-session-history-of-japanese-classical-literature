@@ -5,9 +5,9 @@ import { join } from 'node:path'
 import { loadPresets, presetIndex, PRESET_DIR, SCHEMA_DIR } from './scripts/presets.ts'
 
 /**
- * Ships the quizzes in GENERATED/QUIZ with the viewer as presets/index.json
+ * Ships quizzes from the configured directory as presets/index.json
  * plus presets/<file>.json, and the JSON Schemas under schema/. The dev server
- * serves them live from the repository; the build emits them as assets. A
+ * serves them live from that directory; the build emits them as assets. A
  * preset that fails validation fails the build.
  */
 function quizPresets(): Plugin {

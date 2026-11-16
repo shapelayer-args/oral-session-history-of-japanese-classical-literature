@@ -1,6 +1,6 @@
 /**
- * File → 열기: a modal with two sources, the repository's presets
- * (GENERATED/QUIZ, shipped with the build) and the local disk (a JSON file
+ * File → 열기: a modal with two sources, bundled presets
+ * (shipped with the build) and the local disk (a JSON file
  * or a folder of them). Emits `quiz-open` with the chosen quiz.
  */
 
@@ -28,7 +28,7 @@ const TEMPLATE = `
         <button type="button" role="tab" class="qv-tab" data-tab="local">로컬</button>
       </div>
       <section class="qv-dialog__body" data-pane="presets" role="tabpanel">
-        <p class="qv-muted">이 리포지토리의 <code>GENERATED/QUIZ</code> 에 포함된 퀴즈입니다.</p>
+        <p class="qv-muted">이 뷰어에 포함된 퀴즈입니다.</p>
         <ul class="qv-list" data-list="presets"></ul>
       </section>
       <section class="qv-dialog__body" data-pane="local" role="tabpanel" hidden>

@@ -1,5 +1,5 @@
 /**
- * Collects the preset quizzes from GENERATED/QUIZ: every *.json there is
+ * Collects quizzes from the configured preset directory: every *.json there is
  * checked against schema/quiz.schema.json and the viewer's own rules, then
  * listed in presets/index.json. Used by the Vite plugin (dev server and build)
  * and by scripts/check-presets.ts.
@@ -15,8 +15,7 @@ import { SPEC_VERSION, type PresetIndex, type Quiz } from '../src/quiz/types.ts'
 
 const here = dirname(fileURLToPath(import.meta.url))
 export const VIEWER_ROOT = resolve(here, '..')
-export const REPO_ROOT = resolve(VIEWER_ROOT, '../..')
-export const PRESET_DIR = process.env.QUIZ_PRESET_DIR ? resolve(process.env.QUIZ_PRESET_DIR) : join(REPO_ROOT, 'GENERATED/QUIZ')
+export const PRESET_DIR = process.env.QUIZ_PRESET_DIR ? resolve(process.env.QUIZ_PRESET_DIR) : join(VIEWER_ROOT, 'presets')
 export const SCHEMA_DIR = join(VIEWER_ROOT, 'schema')
 
 export interface Preset {
@@ -76,7 +75,7 @@ export function loadPresets(dir = PRESET_DIR): Preset[] {
       problems.push(`${file}\n    ${list.join('\n    ')}`)
     }
   }
-  if (problems.length) throw new Error(`GENERATED/QUIZ 프리셋 검증 실패:\n  ${problems.join('\n  ')}`)
+  if (problems.length) throw new Error(`프리셋 검증 실패 (${dir}):\n  ${problems.join('\n  ')}`)
   return presets
 }
 

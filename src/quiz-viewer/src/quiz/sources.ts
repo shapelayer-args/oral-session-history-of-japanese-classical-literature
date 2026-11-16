@@ -1,6 +1,6 @@
 /**
  * Where quizzes come from: the presets shipped with the build
- * (presets/index.json, generated from GENERATED/QUIZ), a local file, or a
+ * (listed in presets/index.json), a local file, or a
  * local folder of JSON files.
  */
 

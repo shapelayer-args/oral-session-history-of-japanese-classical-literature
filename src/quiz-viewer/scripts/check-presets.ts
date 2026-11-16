@@ -1,5 +1,5 @@
 /**
- * Validates every quiz in GENERATED/QUIZ (or the files given as arguments)
+ * Validates every configured preset (or the files given as arguments)
  * against schema/quiz.schema.json and the viewer's rules.
  *
  *   npm run check:presets

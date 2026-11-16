@@ -1,22 +1,25 @@
 # Quiz Viewer API
 
 퀴즈 뷰어(`src/quiz-viewer`)가 읽는 퀴즈 JSON의 형식과, 프리셋 배포 방식을 정의한다.
-퀴즈의 내용 요건은 [`AGENTS/GENERATE_QUIZ.md`](../AGENTS/GENERATE_QUIZ.md), 뷰어 요건은 [`AGENTS/DEVELOP_QUIZ_VIEWER.md`](../AGENTS/DEVELOP_QUIZ_VIEWER.md)를 따른다.
+아래 예시는 이 저장소의 일본 고전문학사 데모에서 가져왔다. 데모의 출제 기준은 [`AGENTS/GENERATE_QUIZ.md`](../AGENTS/GENERATE_QUIZ.md)를 참고한다.
 
 - JSON Schema: [`src/quiz-viewer/schema/quiz.schema.json`](../src/quiz-viewer/schema/quiz.schema.json) (Draft 2020-12)
 - 프리셋 목록 Schema: [`src/quiz-viewer/schema/presets.schema.json`](../src/quiz-viewer/schema/presets.schema.json)
-- 배포 URL: <https://shapelayer-args.github.io/oral-session-history-of-japanese-classical-literature/quiz-viewer/>
+- 이 저장소의 데모 배포 URL: <https://shapelayer-args.github.io/oral-session-history-of-japanese-classical-literature/quiz-viewer/>
 - 현재 스펙 버전: `1.0`
 
 ## 1. 파일 위치
 
 | 경로 | 설명 |
 |---|---|
-| `GENERATED/QUIZ/*.json` | 프리셋 퀴즈. 파일 하나에 퀴즈 세트 하나. 빌드할 때 모두 검증되고 함께 배포된다. |
+| `src/quiz-viewer/presets/*.json` | 기본 프리셋 폴더. 파일 하나에 퀴즈 세트 하나. 빌드할 때 모두 검증되고 함께 배포된다. |
+| `GENERATED/QUIZ/*.json` | 이 저장소의 데모 프리셋. GitHub Pages 빌드에서 사용한다. |
 | `src/quiz-viewer/schema/` | JSON Schema. 배포본에서는 `quiz-viewer/schema/` 경로로 제공된다. |
 
+다른 프리셋 폴더를 쓰려면 `QUIZ_PRESET_DIR`를 지정한다. 상대 경로는 명령을 실행한 디렉터리를 기준으로 해석한다. 프리셋 폴더가 없으면 빈 목록을 제공한다.
+
 파일 이름은 자유롭게 정하되 `id`와 맞추는 것을 권장한다 (예: `heian-monogatari-normal.json`).
-파일 첫 줄에 `"$schema": "../../src/quiz-viewer/schema/quiz.schema.json"`을 넣어 두면 편집기가 자동완성과 검증을 해 준다.
+JSON의 `$schema`에 스키마 경로를 지정하면 편집기가 자동완성과 검증을 해 준다. 아래 예시는 `GENERATED/QUIZ`를 기준으로 한다. 기본 프리셋 폴더에서는 `../schema/quiz.schema.json`을 쓴다.
 
 ## 2. 퀴즈 문서 (`Quiz`)
 
@@ -146,7 +149,7 @@ JSON Schema 검증에 더해, 뷰어와 빌드는 스키마로 표현할 수 없
 ```sh
 cd src/quiz-viewer
 npm ci
-npm run check:presets                          # GENERATED/QUIZ 전체
+npm run check:presets                          # 설정된 프리셋 폴더 전체
 node scripts/check-presets.ts path/to/a.json   # 특정 파일
 ```
 
@@ -154,7 +157,7 @@ node scripts/check-presets.ts path/to/a.json   # 특정 파일
 
 ## 8. 프리셋 목록 (`presets/index.json`)
 
-빌드할 때 `GENERATED/QUIZ`로부터 생성되는 파일이다. 저장소에 커밋하지 않는다. 뷰어의 "파일 → 열기 → 프리셋" 탭이 이 파일을 읽는다.
+빌드할 때 설정된 프리셋 폴더로부터 생성되는 파일이다. 저장소에 커밋하지 않는다. 뷰어의 "파일 → 열기 → 프리셋" 탭이 이 파일을 읽는다.
 
 ```json
 {
@@ -181,7 +184,7 @@ quiz-viewer/
   index.html
   assets/…
   presets/index.json
-  presets/<GENERATED/QUIZ 의 파일 이름>.json   (원본 그대로)
+  presets/<프리셋 파일 이름>.json   (원본 그대로)
   schema/quiz.schema.json
   schema/presets.schema.json
 ```
@@ -207,12 +210,13 @@ quiz-viewer/
 ```sh
 cd src/quiz-viewer
 npm ci
-npm run dev       # http://127.0.0.1:5173, GENERATED/QUIZ 를 실시간으로 제공
+npm run dev       # http://127.0.0.1:5173, 설정된 프리셋을 실시간으로 제공
 npm run build     # typecheck + 프리셋 검증 + dist/ 생성
 npm run preview
 ```
 
 - 소스는 TypeScript와 Custom Elements(WebComponents)로 작성되어 있다. 시작 화면 일러스트만 Stageshow kit(React)을 쓰며, 지연 로드된다. kit은 `SKILLS/stageshow` 서브모듈에서 `src/quiz-viewer/vendor/stageshow/kit`으로 복사해 두었다 (MIT, `vendor/stageshow/LICENSE`). 서브모듈을 갱신하면 다시 복사해야 한다.
+- 도움말의 JSON 스펙 링크는 기본으로 배포본의 JSON Schema를 연다. 빌드 시 `VITE_QUIZ_SPEC_URL`을 지정하면 별도 문서를 연결할 수 있다.
 - CI: `.github/workflows/quiz-viewer-pages.yml`. `main`에 push되고 `src/quiz-viewer/**`, `GENERATED/QUIZ/**` 또는 워크플로가 바뀌면 빌드해 GitHub Pages에 배포한다. PR에서는 빌드와 검증만 한다. 사이트 루트(`/`)는 `/quiz-viewer/`로 리디렉션한다.
 - 저장소의 **Settings → Pages → Source**를 **GitHub Actions**로 설정해야 배포된다.
 
