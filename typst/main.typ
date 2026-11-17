@@ -871,3 +871,11 @@
 현재를 살아가는 남겨진 이들에게도
 
 계속해서 삶을 이어나가기 위한 위안은 필요하므로
+
+#pagebreak()
+
+#{
+  set text(size: 12pt)
+  set align(left)
+  bibliography("refs.bib", full: true, title: text(size: 30pt)[#align(center)[References #v(1em)]])
+}
