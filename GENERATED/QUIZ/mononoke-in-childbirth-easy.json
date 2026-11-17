@@ -1,0 +1,570 @@
+{
+  "$schema": "../../src/quiz-viewer/schema/quiz.schema.json",
+  "specVersion": "1.0",
+  "id": "mononoke-in-childbirth-easy",
+  "title": "산실에서 드러나는 모노노케의 정체",
+  "description": "모노노케의 뜻과 두 작품의 주요 장면을 확인하는 12문항.",
+  "language": "ko",
+  "difficulty": "easy",
+  "authors": [
+    "Codex"
+  ],
+  "sources": [
+    {
+      "label": "발표 슬라이드 「산실에서 드러나는 모노노케의 정체」(본문에 표기된 슬라이드 번호 기준)",
+      "path": "typst/main.typ"
+    },
+    {
+      "label": "『헤이케모노가타리』 제3권 승려 라이고(頼豪)",
+      "path": "resources/heike/content/03/038.md"
+    },
+    {
+      "label": "『헤이케모노가타리』 제3권 사면을 알리는 문서(許文)",
+      "path": "resources/heike/content/03/033.md"
+    },
+    {
+      "label": "『헤이케모노가타리』 제3권 출산을 위한 기도(御産巻)",
+      "path": "resources/heike/content/03/035.md"
+    }
+  ],
+  "questions": [
+    {
+      "id": "raigo",
+      "type": "single-choice",
+      "mode": "pick-valid",
+      "prompt": "「라이고」에서 사람들이 황자의 머리맡에서 보았다고 한 것은?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "석장을 든 백발의 노승",
+          "valid": true,
+          "explanation": "꿈속과 현실에서 보았다고 한 형상은 석장을 든 백발의 노승이다."
+        },
+        {
+          "id": "b",
+          "text": "수레에 탄 귀족 여성",
+          "valid": false,
+          "explanation": "수레에 얽힌 귀족 여성의 일화는 「아오이」에서 나온다."
+        },
+        {
+          "id": "c",
+          "text": "경전을 읽는 고시라카와 법황",
+          "valid": false,
+          "explanation": "법황의 독송은 「어산」의 산실 장면에 나온다."
+        },
+        {
+          "id": "d",
+          "text": "섬에서 돌아온 유배자",
+          "valid": false,
+          "explanation": "유배자의 귀환은 중궁의 순산을 기원하는 사면 이야기와 관련된다."
+        }
+      ],
+      "answer": "a",
+      "explanation": "백발의 노승이 석장을 들고 서 있었다는 장면이다.",
+      "references": [
+        {
+          "label": "「라이고」의 백발 노승과 원령",
+          "path": "typst/main.typ",
+          "slide": 1
+        },
+        {
+          "label": "『헤이케모노가타리』 제3권 승려 라이고(頼豪)",
+          "path": "resources/heike/content/03/038.md"
+        }
+      ]
+    },
+    {
+      "id": "meaning",
+      "type": "single-choice",
+      "mode": "pick-invalid",
+      "prompt": "발표에서 소개한 모노노케의 뜻으로 옳지 않은 것은?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "그 작용으로 생기는 심신의 부조",
+          "valid": true,
+          "explanation": "발표의 두 번째 뜻은 어떤 기운이 사람에게 작용해 생겨난 심신의 부조다."
+        },
+        {
+          "id": "b",
+          "text": "원인이 되는 존재 자체",
+          "valid": true,
+          "explanation": "발표의 세 번째 뜻은 부조를 일으키는 존재 자체다."
+        },
+        {
+          "id": "c",
+          "text": "병세를 다스리기 위해 외우는 경전",
+          "valid": false,
+          "explanation": "경전은 독경의 대상이다. 모노노케는 기운이나 부조, 원인이 되는 존재를 가리킨다."
+        },
+        {
+          "id": "d",
+          "text": "사람의 영혼이나 오니 등이 내는 기운",
+          "valid": true,
+          "explanation": "발표의 첫 번째 뜻에 해당한다. 오니나 여우 등이 내는 기운이 예시로 제시된다."
+        }
+      ],
+      "answer": "c",
+      "explanation": "발표는 모노노케가 기운, 심신의 부조, 그 원인이 되는 존재를 가리킬 수 있다고 설명한다.",
+      "references": [
+        {
+          "label": "모노노케의 세 가지 의미",
+          "path": "typst/main.typ",
+          "slide": 4
+        },
+        {
+          "label": "정체가 드러나기 전후의 호칭",
+          "path": "typst/main.typ",
+          "slide": 6
+        }
+      ]
+    },
+    {
+      "id": "vulnerability",
+      "type": "single-choice",
+      "mode": "pick-valid",
+      "prompt": "「유기리」 인용에 따르면 모노노케가 기세를 얻는 때는 언제인가?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "기도를 막 시작했을 때",
+          "valid": false,
+          "explanation": "기도의 시작이 기세를 키운다는 내용은 없다. 인용은 사람의 약해진 상태에 주목한다."
+        },
+        {
+          "id": "b",
+          "text": "몸과 마음이 회복되었을 때",
+          "valid": false,
+          "explanation": "인용에서 틈을 제공하는 것은 사람이 약해진 상태다."
+        },
+        {
+          "id": "c",
+          "text": "빙의한 영의 이름이 알려졌을 때",
+          "valid": false,
+          "explanation": "발표에서 정체를 알아내는 일은 호칭의 변화와 연결된다."
+        },
+        {
+          "id": "d",
+          "text": "사람이 약해졌을 때",
+          "valid": true,
+          "explanation": "인용문은 사람이 약해진 틈을 타 모노노케가 기세를 얻는다고 설명한다."
+        }
+      ],
+      "answer": "d",
+      "explanation": "「유기리」는 사람이 약해진 틈에 모노노케가 기세를 얻는다고 말한다.",
+      "references": [
+        {
+          "label": "「유기리」 인용과 심신의 부조",
+          "path": "typst/main.typ",
+          "slide": 7
+        }
+      ]
+    },
+    {
+      "id": "carriage",
+      "type": "single-choice",
+      "mode": "pick-invalid",
+      "prompt": "「아오이」의 수레 다툼에 관한 설명으로 옳지 않은 것은?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "아오이노우에의 수레가 밀려난 쪽이다.",
+          "valid": false,
+          "explanation": "아오이노우에 쪽 수레들 때문에 미야스도코로의 수레가 밀려났다."
+        },
+        {
+          "id": "b",
+          "text": "미야스도코로는 자기 수레에서 제대로 볼 수 없었다.",
+          "valid": true,
+          "explanation": "수레가 안쪽으로 떠밀려 아무것도 보이지 않았다고 한다."
+        },
+        {
+          "id": "c",
+          "text": "미야스도코로는 자기 신원이 드러난 일을 분해했다.",
+          "valid": true,
+          "explanation": "자신이 누구인지 알려진 상태에서 수모를 겪었다는 점이 특히 분했다."
+        },
+        {
+          "id": "d",
+          "text": "아오이노우에 쪽 수레들이 미야스도코로의 자리에 영향을 주었다.",
+          "valid": true,
+          "explanation": "미야스도코로의 수레가 밀려난 계기로 상대편의 수레들이 제시된다."
+        }
+      ],
+      "answer": "a",
+      "explanation": "안쪽으로 밀린 것은 미야스도코로의 수레다. 미야스도코로는 신분이 드러난 채 겪은 망신을 특히 분해했다.",
+      "references": [
+        {
+          "label": "「아오이」의 수레 다툼",
+          "path": "typst/main.typ",
+          "slide": 9
+        }
+      ]
+    },
+    {
+      "id": "living",
+      "type": "single-choice",
+      "mode": "pick-valid",
+      "prompt": "「아오이」에서 아오이노우에를 괴롭힌다고 소문난 존재는 누구인가?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "사이코 법사의 악령",
+          "valid": false,
+          "explanation": "사이코는 「사문」에서 중궁에게 붙은 영들 가운데 하나로 지목된다."
+        },
+        {
+          "id": "b",
+          "text": "로쿠조노 미야스도코로의 생령",
+          "valid": true,
+          "explanation": "아오이노우에의 상태가 나빠지자 미야스도코로의 생령이라는 소문이 돈다."
+        },
+        {
+          "id": "c",
+          "text": "나리치카의 사령",
+          "valid": false,
+          "explanation": "나리치카의 사령은 『헤이케모노가타리』의 중궁 장면에 등장한다."
+        },
+        {
+          "id": "d",
+          "text": "기카이가시마 유배자들의 생령",
+          "valid": false,
+          "explanation": "유배자들의 생령은 「사문」에서 밝혀지는 존재다."
+        }
+      ],
+      "answer": "b",
+      "explanation": "로쿠조노 미야스도코로의 생령이라는 소문이 나오고, 미야스도코로도 자신의 꿈과 겐지의 편지를 통해 그 가능성을 의식한다.",
+      "references": [
+        {
+          "label": "「아오이」의 생령 소문과 꿈",
+          "path": "typst/main.typ",
+          "slide": 10
+        },
+        {
+          "label": "「아오이」의 편지",
+          "path": "typst/main.typ",
+          "slide": 11
+        }
+      ]
+    },
+    {
+      "id": "offerings",
+      "type": "single-choice",
+      "mode": "pick-invalid",
+      "prompt": "발표의 도식에서 미야스도코로가 사령이 된 뒤의 사건으로 옳지 않은 것은?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "미야스도코로의 사령이 무라사키노우에에게 붙는다.",
+          "valid": true,
+          "explanation": "도식은 사령화 다음 사건으로 무라사키노우에의 빙의를 놓는다."
+        },
+        {
+          "id": "b",
+          "text": "겐지가 공양을 올린다.",
+          "valid": true,
+          "explanation": "겐지의 공양은 무라사키노우에의 빙의 뒤에 나온다."
+        },
+        {
+          "id": "c",
+          "text": "미야스도코로의 생령이 「아오이」에서 처음 나타난다.",
+          "valid": false,
+          "explanation": "「아오이」의 사건은 미야스도코로가 살아 있을 때 벌어지므로 사령화 이전이다."
+        },
+        {
+          "id": "d",
+          "text": "미야스도코로의 딸이 추선공양을 올린다.",
+          "valid": true,
+          "explanation": "딸의 추선공양은 도식에서 사령화 이후, 성불에 앞서 제시된다."
+        }
+      ],
+      "answer": "c",
+      "explanation": "도식에서 아오이에게 얽힌 생령 사건은 미야스도코로가 사령이 되기 앞서 일어난다.",
+      "references": [
+        {
+          "label": "두 작품의 모노노케 서사 비교 도식",
+          "path": "typst/main.typ",
+          "slide": 25
+        }
+      ]
+    },
+    {
+      "id": "medium",
+      "type": "single-choice",
+      "mode": "pick-valid",
+      "prompt": "「사문」에서 중궁에게 붙은 영들이 정체를 드러낼 때 매개가 된 사람은 누구인가?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "『천수경』을 읽은 법황",
+          "valid": false,
+          "explanation": "법황의 『천수경』 독송은 이어지는 「어산」의 장면에 나온다."
+        },
+        {
+          "id": "b",
+          "text": "태정대신을 추증받은 요리나가",
+          "valid": false,
+          "explanation": "요리나가는 정체가 밝혀진 영 가운데 하나다."
+        },
+        {
+          "id": "c",
+          "text": "유배에서 돌아오게 하려는 나리쓰네",
+          "valid": false,
+          "explanation": "나리쓰네의 귀환은 나리치카의 사령을 달래는 방안으로 제안된다."
+        },
+        {
+          "id": "d",
+          "text": "영이 옮겨 붙은 요리마시",
+          "valid": true,
+          "explanation": "영매인 요리마시에게 영이 옮겨 붙고 명왕의 속박 아래에서 정체가 드러난다."
+        }
+      ],
+      "answer": "d",
+      "explanation": "영이 옮겨 붙은 요리마시는 영의 정체를 드러내는 매개다.",
+      "references": [
+        {
+          "label": "「사문」에서 정체가 밝혀지는 장면",
+          "path": "typst/main.typ",
+          "slide": 18
+        },
+        {
+          "label": "『헤이케모노가타리』 제3권 사면을 알리는 문서(許文)",
+          "path": "resources/heike/content/03/033.md"
+        }
+      ]
+    },
+    {
+      "id": "honors",
+      "type": "single-choice",
+      "mode": "pick-invalid",
+      "prompt": "「사문」과 비교 도식의 원령을 달래는 조치에 관해 옳지 않은 것은?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "나리치카에게 태정대신과 정일위를 추증했다.",
+          "valid": false,
+          "explanation": "태정대신과 정일위를 추증받은 사람은 요리나가다."
+        },
+        {
+          "id": "b",
+          "text": "사누키인에게 스토쿠 천황이라는 추호를 올렸다.",
+          "valid": true,
+          "explanation": "사누키인에게 사후에 올린 칭호가 스토쿠 천황이다."
+        },
+        {
+          "id": "c",
+          "text": "요리나가에게 관직과 품계를 추증했다.",
+          "valid": true,
+          "explanation": "발표에 제시된 관직은 태정대신, 품계는 정일위다."
+        },
+        {
+          "id": "d",
+          "text": "나리치카의 사령을 달래려 나리쓰네를 돌아오게 하자는 제안이 나왔다.",
+          "valid": true,
+          "explanation": "「사문」에서 여전히 살아 있는 나리쓰네의 귀환을 제안한다."
+        }
+      ],
+      "answer": "a",
+      "explanation": "추호는 스토쿠에게 올렸고 태정대신과 정일위는 요리나가에게 추증했다.",
+      "references": [
+        {
+          "label": "「사문」의 추호·추증과 귀환 제안",
+          "path": "typst/main.typ",
+          "slide": 19
+        },
+        {
+          "label": "두 작품의 모노노케 서사 비교 도식",
+          "path": "typst/main.typ",
+          "slide": 25
+        },
+        {
+          "label": "『헤이케모노가타리』 제3권 사면을 알리는 문서(許文)",
+          "path": "resources/heike/content/03/033.md"
+        }
+      ]
+    },
+    {
+      "id": "sutra",
+      "type": "single-choice",
+      "mode": "pick-valid",
+      "prompt": "「어산」의 인용에서 법황이 소리 내어 읽은 경전은 무엇인가?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "『법화경』",
+          "valid": false,
+          "explanation": "발표의 인용에는 『천수경』이 나온다."
+        },
+        {
+          "id": "b",
+          "text": "『화엄경』",
+          "valid": false,
+          "explanation": "법황이 이 장면에서 읽는 경전은 『천수경』이다."
+        },
+        {
+          "id": "c",
+          "text": "『천수경』",
+          "valid": true,
+          "explanation": "『천수경』을 읽자 요리마시들의 소동이 잠시 잦아들었다."
+        },
+        {
+          "id": "d",
+          "text": "『반야심경』",
+          "valid": false,
+          "explanation": "요리마시의 소동이 가라앉는 장면의 경전은 『천수경』이다."
+        }
+      ],
+      "answer": "c",
+      "explanation": "법황의 『천수경』 독송 뒤 요리마시들이 일으키던 소동이 잠시 가라앉았다.",
+      "references": [
+        {
+          "label": "「어산」의 독송과 법황의 말",
+          "path": "typst/main.typ",
+          "slide": 21
+        },
+        {
+          "label": "『헤이케모노가타리』 제3권 출산을 위한 기도(御産巻)",
+          "path": "resources/heike/content/03/035.md"
+        }
+      ]
+    },
+    {
+      "id": "birth",
+      "type": "single-choice",
+      "mode": "pick-invalid",
+      "prompt": "발표의 출산과 모노노케에 관한 설명으로 옳지 않은 것은?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "출산은 목숨이 걸릴 만큼 위험할 수 있었다.",
+          "valid": true,
+          "explanation": "발표는 출산을 목숨을 담보로 하는 생물학적 도전으로 제시한다."
+        },
+        {
+          "id": "b",
+          "text": "출산 때 생긴 병세는 원인을 알기 어려울 수 있었다.",
+          "valid": true,
+          "explanation": "발표는 출산기에 출처가 분명하지 않은 질환을 겪을 수 있다는 점을 강조한다."
+        },
+        {
+          "id": "c",
+          "text": "사람들은 굿이나 제사, 기도 같은 수단에 의지할 수 있었다.",
+          "valid": true,
+          "explanation": "발표는 의학적 수단이 제한된 상황에서 이러한 의례를 대응 수단으로 든다."
+        },
+        {
+          "id": "d",
+          "text": "발표는 출산의 위험이 낮아서 모노노케 서사가 자주 등장했다고 본다.",
+          "valid": false,
+          "explanation": "발표가 모노노케 서사의 빈도와 연결하는 것은 출산이 수반한 큰 위험이다."
+        }
+      ],
+      "answer": "d",
+      "explanation": "발표는 출산 자체의 위험이 컸고 병세에 대응할 수단이 제한적이었다고 본다.",
+      "references": [
+        {
+          "label": "모노노케와 출산의 관계",
+          "path": "typst/main.typ",
+          "slide": 28
+        },
+        {
+          "label": "출산의 위험과 대응 수단",
+          "path": "typst/main.typ",
+          "slide": 29
+        }
+      ]
+    },
+    {
+      "id": "waka",
+      "type": "single-choice",
+      "mode": "pick-valid",
+      "prompt": "『무라사키 시키부 집』의 와카에서 화자가 괴로움의 원인일 수 있다고 되묻는 것은 무엇인가?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "유배지의 원령",
+          "valid": false,
+          "explanation": "유배지와 관련된 영들은 『헤이케모노가타리』에서 다뤄진다."
+        },
+        {
+          "id": "b",
+          "text": "자기 마음속의 귀신",
+          "valid": true,
+          "explanation": "와카의 질문은 화자 자신의 마음으로 향한다."
+        },
+        {
+          "id": "c",
+          "text": "황자 곁의 노승",
+          "valid": false,
+          "explanation": "백발 노승은 「라이고」의 인용에 등장한다."
+        },
+        {
+          "id": "d",
+          "text": "명왕의 속박",
+          "valid": false,
+          "explanation": "명왕의 속박은 「사문」에서 영의 정체가 드러나는 수단이다."
+        }
+      ],
+      "answer": "b",
+      "explanation": "와카는 죽은 이에게 원망을 돌리는 마음을 돌아보며 자기 마음속 귀신을 언급한다.",
+      "references": [
+        {
+          "label": "『무라사키 시키부 집』의 와카",
+          "path": "typst/main.typ",
+          "slide": 27
+        },
+        {
+          "label": "원인을 상정하고 진혼하려는 시도",
+          "path": "typst/main.typ",
+          "slide": 30
+        }
+      ]
+    },
+    {
+      "id": "consolation",
+      "type": "single-choice",
+      "mode": "pick-invalid",
+      "prompt": "발표 마지막 부분에서 설명하는 진혼과 위안에 관한 내용으로 옳지 않은 것은?",
+      "choices": [
+        {
+          "id": "a",
+          "text": "사람들은 병세에 모노노케라는 원인을 붙여 대응하려 했다.",
+          "valid": true,
+          "explanation": "발표는 알 수 없는 원인을 모노노케로 상정하는 시도에 주목한다."
+        },
+        {
+          "id": "b",
+          "text": "발표는 진혼을 하면 병이 반드시 나았다고 설명한다.",
+          "valid": false,
+          "explanation": "발표는 진혼을 시도한 의미와 위안의 가능성을 제시한다. 치료가 보장된다고 단정하지 않는다."
+        },
+        {
+          "id": "c",
+          "text": "진혼을 통해 병세의 원인을 제거하려 했다는 해석이 나온다.",
+          "valid": true,
+          "explanation": "발표는 원인을 상정하고 그 원인을 상대한다는 점을 강조한다."
+        },
+        {
+          "id": "d",
+          "text": "남겨진 이들이 삶을 이어가는 데 위안이 필요하다는 말로 맺는다.",
+          "valid": true,
+          "explanation": "마지막 본문 슬라이드는 오늘날 남겨진 이들에게도 위안이 필요하다고 말한다."
+        }
+      ],
+      "answer": "b",
+      "explanation": "발표는 모노노케를 원인으로 상정하고 진혼을 시도하는 일이 남겨진 이들에게 위안이 되었을 수 있다고 본다.",
+      "references": [
+        {
+          "label": "원인을 상정하고 진혼하려는 시도",
+          "path": "typst/main.typ",
+          "slide": 30
+        },
+        {
+          "label": "남겨진 사람의 위안",
+          "path": "typst/main.typ",
+          "slide": 32
+        }
+      ]
+    }
+  ]
+}
