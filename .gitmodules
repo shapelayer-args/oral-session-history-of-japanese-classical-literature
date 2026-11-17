@@ -4,3 +4,6 @@
 [submodule "resources/oral-session-history-of-japanese-classical-literature-private"]
 	path = resources/oral-session-history-of-japanese-classical-literature-private
 	url = https://github.com/shapelayer-args/oral-session-history-of-japanese-classical-literature-private.git
+[submodule "resources/heike"]
+	path = resources/heike
+	url = https://github.com/shapelayer-args/heike
